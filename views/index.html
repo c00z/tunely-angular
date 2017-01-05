@@ -31,13 +31,16 @@
       <p><b>New Album:</b> {{albumsIndexCtrl.newAlbum.name}} &nbsp;|&nbsp; {{albumsIndexCtrl.newAlbum.artistName}}</p>
 
       <input type="text" class="form-control" placeholder="New album name" ng-model="albumsIndexCtrl.newAlbum.name">
+      <br>
       <input type="text" class="form-control" placeholder="New album artist" ng-model="albumsIndexCtrl.newAlbum.artistName">
       <br>
-      <label>Search: <input ng-model="searchText"></label> <br>
-      <br>  
-      <div ng-repeat="album in albumsIndexCtrl.albums | orderBy: 'name'" >
+
+      <input type="text" class="form-control" ng-model="searchText" placeholder="Search Albums">
+      <div ng-repeat="album in albumsIndexCtrl.albums | orderBy: 'name' | filter: searchText" class="row">
+        <br>
         <p> Name: &nbsp;{{album.name}} </p>
         <p> Artist: &nbsp;{{album.artistName}} </p> <hr>
+
       </div>
 
     </div>
