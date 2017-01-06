@@ -30,15 +30,22 @@
     <div class="container" ng-controller="AlbumsIndexController as albumsIndexCtrl">
       <!-- Form Start -->
       <form ng-submit="albumsIndexCtrl.createAlbum()">
-        <h1>Add New Album</h1>
-        <input type="text" class="form-control" placeholder="New album name" ng-model="albumsIndexCtrl.newAlbum.name">
-        <input type="text" class="form-control" placeholder="New album artist" ng-model="albumsIndexCtrl.newAlbum.artistName">
+        <hr>
+        <h2>Add New Album!</h2>
+        <input type="text" class="form-control" placeholder="Album" ng-model="albumsIndexCtrl.newAlbum.name">
+        <input type="text" class="form-control" placeholder="Artist" ng-model="albumsIndexCtrl.newAlbum.artistName">
+        <input type="text" class="form-control" placeholder="Genre" ng-model="albumsIndexCtrl.newAlbum.genres">
+        <input type="text" class="form-control" placeholder="Release Date" ng-model="albumsIndexCtrl.newAlbum.releaseDate">
         <!-- <p><b>New Album:</b> {{albumsIndexCtrl.newAlbum}}</p> --> <br>
         <input type="submit">
+        <hr>
 
       </form>
       <br>
-      <input type="text" class="form-control" ng-model="searchText" placeholder="Search Albums">
+      <input type="text" class="form-control" ng-model="searchText" placeholder="Album Filter"><br>
+
+      <input type="text" class="form-control" ng-model="search" placeholder="Album Search"><br>
+
       <div ng-repeat="album in albumsIndexCtrl.albums | orderBy: 'name' | filter: searchText" class="row">
 
         <div class="col-md-10 col-md-offset-1">
@@ -62,6 +69,17 @@
                       <h4 class="inline-header">Artist Name:</h4>
                       <span>{{album.artistName}}</span>
                     </li>
+
+                    <li class="list-group-item">
+                      <h4 class="inline-header">Genre:</h4>
+                      <span>{{album.genres}}</span>
+                    </li>
+
+                    <li class="list-group-item">
+                      <h4 class="inline-header">Release Date:</h4>
+                      <span>{{album.releaseDate}}</span>
+                    </li>
+
                   </ul>
                 </div>
               </div>
