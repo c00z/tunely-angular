@@ -21,7 +21,7 @@ function AlbumsIndexController ( $http ) {
  vm.createAlbum = function () {
    $http({
      method: 'POST',
-     url: '/api/albums',
+     url: '/api/albums/:albumId',
      data: { name: vm.newAlbum.name,
       artistName: vm.newAlbum.artistName,
       genres: vm.newAlbum.genres,
