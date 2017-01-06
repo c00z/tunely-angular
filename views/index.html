@@ -27,14 +27,17 @@
       </div>
     </div>
 
-    <!-- Here we declare the controller that will be in charge of the
-        logic for this portion of the HTML. The 'as' part of the statement
-        means that the controller's alias within the HTML will be
-        albumsIndexCtrl-->
     <div class="container" ng-controller="AlbumsIndexController as albumsIndexCtrl">
-      <input type="text" class="form-control" placeholder="New album name" ng-model="albumsIndexCtrl.newAlbum.name">
-      <input type="text" class="form-control" placeholder="New album artist" ng-model="albumsIndexCtrl.newAlbum.artistName">
-      <p><b>albumsIndexCtrl.newAlbum:</b> {{albumsIndexCtrl.newAlbum}}</p>
+      <!-- Form Start -->
+      <form ng-submit="albumsIndexCtrl.createAlbum()">
+        <h1>Add New Album</h1>
+        <input type="text" class="form-control" placeholder="New album name" ng-model="albumsIndexCtrl.newAlbum.name">
+        <input type="text" class="form-control" placeholder="New album artist" ng-model="albumsIndexCtrl.newAlbum.artistName">
+        <!-- <p><b>New Album:</b> {{albumsIndexCtrl.newAlbum}}</p> --> <br>
+        <input type="submit">
+
+      </form>
+      <br>
       <input type="text" class="form-control" ng-model="searchText" placeholder="Search Albums">
       <div ng-repeat="album in albumsIndexCtrl.albums | orderBy: 'name' | filter: searchText" class="row">
 
