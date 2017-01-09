@@ -38,4 +38,36 @@ function AlbumsIndexController ($http) {
       console.log('There was an error posting the data', response);
     });
   }
+    vm.deleteAlbum = function (album) {
+    $http({
+      method: 'DELETE',
+      url: '/api/albums/'+ album._id
+    }).then(function successCallback(deletedAlbum) {
+      var index = vm.albums.indexOf(album);
+      console.log("DELETED");
+      vm.albums.splice(index, 1);
+    }, function errorCallback(response) {
+      console.log('There was an error deleting the data', response);
+    });
+}
+
+  vm.editAlbum = function (album) {
+  $http({
+    method: 'PUT',
+    url: '/api/albums/'+ album._id,
+    data: { name: album.name,
+      artistName: album.artistName
+    }
+  }).then(function successCallback(editAlbum) {
+    console.log(editAlbum);
+    var index = vm.albums.indexOf(album);
+    console.log("UPDATED", index);
+    vm.albums.splice(index, 1, editAlbum.data);
+  }, function errorCallback(response) {
+    console.log('There was an error updating the data', response);
+  });
+  }
+
+
+
 }
